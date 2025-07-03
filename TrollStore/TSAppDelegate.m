@@ -1,9 +1,23 @@
-#import "TSAppDelegate.h"
-#import "TSRootViewController.h"
-
+#import "TSModuleManager.h"
+#import "TSExploitManager.h"
 @implementation TSAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // 初始化漏洞管理器
+    NSString *exploitsPath = [[NSBundle mainBundle] pathForResource:@"Exploits" ofType:nil];
+    [[TSExploitManager sharedManager] loadExploitDescriptorsFromDirectory:exploitsPath];
+    
+    // 注册核心模块（这里需要实际模块实现）
+    // id<TSModuleProtocol> exploitModule = [TSExploitModule new];
+    // [[TSModuleManager sharedManager] registerModule:exploitModule forType:TSModuleTypeExploit];
+    //
+    // id<TSModuleProtocol> installModule = [TSInstallationModule new];
+    // [[TSModuleManager sharedManager] registerModule:installModule forType:TSModuleTypeInstallation];
+    
+    // 其余初始化代码...
+    
+    return YES;
+}(NSDictionary *)launchOptions {
 	return YES;
 }
 
